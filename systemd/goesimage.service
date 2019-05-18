@@ -1,0 +1,6 @@
+[Unit]
+Description=NOAA Geostationary Operational Environment Satellite Background Service
+
+[Service]
+Type=oneshot
+ExecStart=/home/pigmonkey/bin/goesimage -w -e

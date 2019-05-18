@@ -1,0 +1,9 @@
+[Unit]
+Description=NOAA Geostationary Operational Environment Satellite Background Timer
+
+[Timer]
+OnCalendar=*:0/12
+Persistent=true
+
+[Install]
+WantedBy=timers.target

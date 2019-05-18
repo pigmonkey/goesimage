@@ -1,0 +1,90 @@
+#!/bin/bash
+
+usage() {
+    echo "Usage: goesimage [OPTION...]
+Download the latest image from a NOAA Geostationary Operational Environment Satellite and set it as the desktop background.
+
+If multiple satellite are specified, the latest image will be downloaded from each and combined into a single, tiled image.
+
+Options:
+    -e      GOES-East
+    -w      GOES-West
+    -h      display usage"
+}
+
+get_images() {
+    filename_list=()
+    for i in "${satellite_list[@]}"; do
+        url="https://cdn.star.nesdis.noaa.gov/$i/ABI/FD/GEOCOLOR/1808x1808.jpg"
+        filename="$i.jpg"
+        filename_list+=("$filename")
+        curl --silent --output "$filename" "$url"
+    done
+}
+
+check_images() {
+    for file in "${filename_list[@]}"; do
+        if [ ! -s "$file" ]; then
+            echo "Failed to download $file"
+            exit 2
+        fi
+        filetype=$(file -bi "$file")
+        if [[ ! "$filetype" =~ "image/jpeg" ]]; then
+            echo "$file is not a jpeg image"
+            exit 3
+        fi
+    done
+}
+
+process_images() {
+    if [ ${#satellite_list[@]} -gt 1 ]; then
+        convert -border 5 -bordercolor black +append "${filename_list[@]}" latest.jpg
+    else
+        mv "$filename" latest.jpg
+    fi
+}
+
+init_dir() {
+    if [ -n "$XDG_CACHE_DIR" ]; then
+        output_dir="$XDG_CACHE_DIR"/goesimage
+    else
+        output_dir="$HOME"/.cache/goesimage
+    fi
+    mkdir -p "$output_dir"
+    cd "$output_dir"
+}
+
+set_bg() {
+    feh --bg-max "$output_dir/latest.jpg"
+}
+
+satellite_list=()
+while getopts "ewh" opt; do
+    case $opt in
+        w)
+            satellite_list+=("GOES17")
+            ;;
+        e)
+            satellite_list+=("GOES16")
+            ;;
+        h)
+            usage
+            exit
+            ;;
+        *)
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+if [ ${#satellite_list[@]} -eq 0 ]; then
+    echo 'Please specify at least one satellite.'
+    exit 1
+fi
+
+init_dir
+get_images
+check_images
+process_images
+set_bg
