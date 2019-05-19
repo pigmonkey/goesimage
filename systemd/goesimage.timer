@@ -2,7 +2,8 @@
 Description=NOAA Geostationary Operational Environment Satellite Background Timer
 
 [Timer]
-OnCalendar=*:0/12
+OnBootSec=2min
+OnUnitActiveSec=15min
 Persistent=true
 
 [Install]
