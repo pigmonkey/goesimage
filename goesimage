@@ -60,7 +60,7 @@ check_images() {
 
 process_images() {
     if [ ${#satellite_list[@]} -gt 1 ]; then
-        convert -border 5 -bordercolor black +append "${filename_list[@]}" latest.jpg
+        convert -border 20 -bordercolor black +append "${filename_list[@]}" latest.jpg
     else
         mv "$filename" latest.jpg
     fi
