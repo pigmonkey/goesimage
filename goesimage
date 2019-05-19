@@ -9,13 +9,35 @@ If multiple satellite are specified, the latest image will be downloaded from ea
 Options:
     -e      GOES-East
     -w      GOES-West
+    -s      Specify the desired image size:
+                small (678x678),
+                medium (5424x5424, default),
+                large (1808x1808),
+                xlarge (10848x10848)
     -h      display usage"
+}
+
+get_size() {
+    case $size_opt in
+        "small")
+            dimensions="678x678"
+            ;;
+        "large")
+            dimensions="1808x1808"
+            ;;
+        "xlarge")
+            dimensions="10848x10848"
+            ;;
+        *)
+            dimensions="5424x5424"
+            ;;
+    esac
 }
 
 get_images() {
     filename_list=()
     for i in "${satellite_list[@]}"; do
-        url="https://cdn.star.nesdis.noaa.gov/$i/ABI/FD/GEOCOLOR/1808x1808.jpg"
+        url="https://cdn.star.nesdis.noaa.gov/$i/ABI/FD/GEOCOLOR/$dimensions.jpg"
         filename="$i.jpg"
         filename_list+=("$filename")
         curl --silent --output "$filename" "$url"
@@ -59,8 +81,11 @@ set_bg() {
 }
 
 satellite_list=()
-while getopts "ewh" opt; do
+while getopts "s:ewh" opt; do
     case $opt in
+        s)
+            size_opt=$OPTARG
+            ;;
         w)
             satellite_list+=("GOES17")
             ;;
@@ -84,6 +109,7 @@ if [ ${#satellite_list[@]} -eq 0 ]; then
 fi
 
 init_dir
+get_size
 get_images
 check_images
 process_images
