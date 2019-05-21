@@ -14,6 +14,7 @@ Options:
                 medium (5424x5424, default),
                 large (1808x1808),
                 xlarge (10848x10848)
+    -o      output the filename of the image but do not set it as the background
     -h      display usage"
 }
 
@@ -77,11 +78,15 @@ init_dir() {
 }
 
 set_bg() {
-    feh --bg-max "$output_dir/latest.jpg"
+    if [ "$output_only" = true ]; then
+        echo "$output_dir/latest.jpg"
+    else
+        feh --bg-max "$output_dir/latest.jpg"
+    fi
 }
 
 satellite_list=()
-while getopts "s:ewh" opt; do
+while getopts "s:ewoh" opt; do
     case $opt in
         s)
             size_opt=$OPTARG
@@ -91,6 +96,9 @@ while getopts "s:ewh" opt; do
             ;;
         e)
             satellite_list+=("GOES16")
+            ;;
+        o)
+            output_only=true
             ;;
         h)
             usage
