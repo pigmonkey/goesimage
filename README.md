@@ -19,6 +19,7 @@ GOESImage is a bash script which downloads the latest imagery from the [NOAA Geo
                     large (1808x1808),
                     xlarge (10848x10848)
         -o      output the filename of the image but do not set it as the background
+        -v      verbose output
         -h      display usage
 
 GOESImage supports full disk, true color images from either [GOES-West][3] (currently provided by [GOES-17][4]) or [GOES-East][5] (currently provided by [GOES-16][6]). At night the images are colored multispectral infrared.
