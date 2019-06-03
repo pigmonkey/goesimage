@@ -15,8 +15,8 @@ GOESImage is a bash script which downloads the latest imagery from the [NOAA Geo
         -w      GOES-West
         -s      Specify the desired image size:
                     small (678x678),
-                    medium (5424x5424, default),
-                    large (1808x1808),
+                    medium (1808x1808, default),
+                    large (5424x5424),
                     xlarge (10848x10848)
         -o      output the filename of the image but do not set it as the background
         -v      verbose output

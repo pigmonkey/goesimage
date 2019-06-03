@@ -11,8 +11,8 @@ Options:
     -w      GOES-West
     -s      Specify the desired image size:
                 small (678x678),
-                medium (5424x5424, default),
-                large (1808x1808),
+                medium (1808x1808, default),
+                large (5424x5424),
                 xlarge (10848x10848)
     -o      output the filename of the image but do not set it as the background
     -v      verbose output
@@ -39,13 +39,13 @@ get_size() {
             dimensions="678x678"
             ;;
         "large")
-            dimensions="1808x1808"
+            dimensions="5424x5424"
             ;;
         "xlarge")
             dimensions="10848x10848"
             ;;
         *)
-            dimensions="5424x5424"
+            dimensions="1808x1808"
             ;;
     esac
 }
