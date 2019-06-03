@@ -13,7 +13,7 @@
 - Correct medium and large dimensions
 
 
-## [ 0.1.1 ] - 2010-05-20
+## [ 0.1.1 ] - 2019-05-20
 
 ### Added
 - Output filename with `-o`
