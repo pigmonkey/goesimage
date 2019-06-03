@@ -1,7 +1,7 @@
 # Change Log
 
 
-## [Unreleased]
+## [0.1.2] - 2019-06-02
 
 ### Added
 - Explicitly set public domain unlicense
