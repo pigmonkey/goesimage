@@ -76,7 +76,7 @@ check_images() {
 
 process_images() {
     if [ ${#satellite_list[@]} -gt 1 ]; then
-        execute convert -border 20 -bordercolor black +append "${filename_list[@]}" latest.jpg
+        execute convert -border 20 -bordercolor black -background black +append "${filename_list[@]}" latest.jpg
     else
         mv "$filename" latest.jpg
     fi
