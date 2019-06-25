@@ -5,6 +5,7 @@
 
 ### Changed
 - Use a black background when combining images of different dimensions
+- Always add border to image, even when pulling only a single satellite
 
 
 ## [0.1.2] - 2019-06-02
