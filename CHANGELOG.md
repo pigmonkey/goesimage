@@ -1,7 +1,7 @@
 # Change Log
 
 
-## Unreleased
+## [0.1.3] - 2019-06-25
 
 ### Changed
 - Use a black background when combining images of different dimensions
