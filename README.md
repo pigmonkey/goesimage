@@ -22,7 +22,7 @@ GOESImage is a bash script which downloads the latest imagery from the [NOAA Geo
         -v      verbose output
         -h      display usage
 
-GOESImage supports full disk, true color images from either [GOES-West][3] (currently provided by [GOES-17][4]) or [GOES-East][5] (currently provided by [GOES-16][6]). At night the images are colored multispectral infrared.
+GOESImage supports full disk, true color images from either [GOES-West][3] (currently provided by [GOES-18][4]) or [GOES-East][5] (currently provided by [GOES-16][6]). At night the images are colored multispectral infrared.
 
 ![Example image of combined output](example.jpg)
 
@@ -45,8 +45,8 @@ Arch Linux users may install the [goesimage package from the AUR][9]
 
 [1]: https://www.star.nesdis.noaa.gov/GOES/index.php
 [2]: https://feh.finalrewind.org/
-[3]: https://www.star.nesdis.noaa.gov/GOES/fulldisk.php?sat=G17
-[4]: https://en.wikipedia.org/wiki/GOES-17
+[3]: https://www.star.nesdis.noaa.gov/GOES/fulldisk.php?sat=G18
+[4]: https://en.wikipedia.org/wiki/GOES-18
 [5]: https://www.star.nesdis.noaa.gov/GOES/fulldisk.php?sat=G16
 [6]: https://en.wikipedia.org/wiki/GOES-16
 [7]: https://imagemagick.org/script/convert.php

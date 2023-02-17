@@ -103,7 +103,7 @@ while getopts "s:ewovh" opt; do
             size_opt=$OPTARG
             ;;
         w)
-            satellite_list+=("GOES17")
+            satellite_list+=("GOES18")
             ;;
         e)
             satellite_list+=("GOES16")
