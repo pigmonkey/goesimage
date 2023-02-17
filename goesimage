@@ -56,7 +56,7 @@ get_images() {
         url="https://cdn.star.nesdis.noaa.gov/$i/ABI/FD/GEOCOLOR/$dimensions.jpg"
         filename="$i.jpg"
         filename_list+=("$filename")
-        execute curl --silent --output -L "$filename" "$url"
+        execute curl --silent -L --output "$filename" "$url"
     done
 }
 
