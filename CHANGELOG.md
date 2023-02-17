@@ -1,6 +1,15 @@
 # Change Log
 
 
+## [0.1.4] - 2023-02-17
+
+### Changed
+- Replaced GOES-17 with GOES-18 for western hemisphere
+
+### Fixed
+- Allow curl to follow redirects
+
+
 ## [0.1.3] - 2019-06-25
 
 ### Changed
